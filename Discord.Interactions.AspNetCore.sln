@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.218
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCore.Test", "samples\AspNetCore.Test\AspNetCore.Test.csproj", "{32F5A155-7633-49CA-A4E9-911733AB314A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discord.Interactions.AspNetCore", "src\Discord.Interactions.AspNetCore\Discord.Interactions.AspNetCore.csproj", "{5B0EC58C-3D18-419B-A3E2-17F53026949D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{32F5A155-7633-49CA-A4E9-911733AB314A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32F5A155-7633-49CA-A4E9-911733AB314A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32F5A155-7633-49CA-A4E9-911733AB314A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32F5A155-7633-49CA-A4E9-911733AB314A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B0EC58C-3D18-419B-A3E2-17F53026949D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B0EC58C-3D18-419B-A3E2-17F53026949D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B0EC58C-3D18-419B-A3E2-17F53026949D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B0EC58C-3D18-419B-A3E2-17F53026949D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDEEF651-466A-4A7A-A56B-E1E6EB399ADC}
+	EndGlobalSection
+EndGlobal
