@@ -35,16 +35,8 @@ namespace Discord.Interactions.AspNetCore
 
             return new InteractionsBuilder(services);
         }
-
-        //This should be a builder hanging off from the above extension.
-        public static IServiceCollection AddSlashCommand<T>(this IServiceCollection services) where T : DiscordCommand
-        {
-            return services.AddScoped<DiscordCommand, T>();
-        }
     }
-
-
-
+    
     public class InteractionsBuilder : IInteractionsBuilder
     {
         public IServiceCollection Services { get; }
