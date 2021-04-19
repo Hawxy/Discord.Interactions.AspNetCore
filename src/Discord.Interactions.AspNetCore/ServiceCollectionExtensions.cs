@@ -3,6 +3,7 @@ using Discord.Interactions.AspNetCore.Authentication;
 using Discord.Interactions.AspNetCore.Commands;
 using Discord.Interactions.AspNetCore.Domain;
 using Discord.Interactions.AspNetCore.Http;
+using Discord.Interactions.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -30,6 +31,8 @@ namespace Discord.Interactions.AspNetCore
                     p.AddAuthenticationSchemes(SignatureAuthenticationDefaults.AuthenticationScheme)
                         .RequireAuthenticatedUser());
             });
+
+            services.AddTransient<InteractionRouteMiddleware>();
 
             services.AddHostedService<CommandRegistrationService>();
 
