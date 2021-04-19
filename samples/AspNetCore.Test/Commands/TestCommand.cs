@@ -31,8 +31,8 @@ namespace AspNetCore.Test.Commands
             {
                 Data = new InteractionApplicationCommandCallbackData
                 {
-                    Content = "meme",
-                    Flags = InteractionCallbackFlag.Ephemeral
+                    Content = "meme".Some(),
+                    Flags = InteractionCallbackFlag.Ephemeral.Some()
                 }
             });
         }

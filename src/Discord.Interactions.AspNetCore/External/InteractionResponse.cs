@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Optional;
 
 namespace Discord.Interactions.AspNetCore.External
 {
@@ -17,15 +18,15 @@ namespace Discord.Interactions.AspNetCore.External
 
     public record InteractionApplicationCommandCallbackData
     {
-        public bool? TTS { get; init; }
+        public Option<bool> TTS { get; init; }
 
-        public string? Content { get; init; }
+        public Option<string> Content { get; init; }
 
-        public List<object>? Embeds { get; init; }
+        public Option<object> Embeds { get; init; }
 
-        public object? AllowedMentions { get; init; }
+        public Option<object> AllowedMentions { get; init; }
 
-        public InteractionCallbackFlag? Flags { get; init; }
+        public Option<InteractionCallbackFlag> Flags { get; init; }
     }
 
     [Flags]

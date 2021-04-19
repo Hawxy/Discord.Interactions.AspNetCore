@@ -5,6 +5,7 @@ using Optional;
 
 namespace Discord.Interactions.AspNetCore.Commands
 {
+    // TODO replace
     public abstract class DiscordCommand
     {
         public string Name { get; protected init; } = null!;

@@ -36,7 +36,7 @@ namespace Discord.Interactions.AspNetCore.Authentication
 
             var body = await ReadRequestBodyAsync();
 
-            if (ValidateSignature(signature, timestamp, body))
+            if (ValidateSignature())
             {
                 var identity = new ClaimsIdentity(Scheme.Name);
                 var principal = new ClaimsPrincipal(identity);
@@ -47,37 +47,37 @@ namespace Discord.Interactions.AspNetCore.Authentication
 
             return AuthenticateResult.Fail("Invalid Signature");
 
+            async Task<string> ReadRequestBodyAsync()
+            {
+                Request.EnableBuffering();
+                using StreamReader reader = new(Request.Body, Encoding.UTF8, leaveOpen: true);
+                var b = await reader.ReadToEndAsync();
+                Request.Body.Position = 0;
+                return b;
+            }
+
+            bool ValidateSignature()
+            {
+                // Signature
+                var sigBytes = Convert.FromHexString(signature);
+                // Body
+                var data = Encoding.UTF8.GetBytes($"{timestamp}{body}");
+
+                // Public key 
+                var byteKey = Convert.FromHexString(Options.PublicKey);
+                var algorithm = SignatureAlgorithm.Ed25519;
+
+                var key = PublicKey.Import(algorithm, byteKey, KeyBlobFormat.RawPublicKey);
+
+                return algorithm.Verify(key, data, sigBytes);
+            }
+
         }
 
         protected override Task HandleForbiddenAsync(AuthenticationProperties properties)
         {
             Response.StatusCode = 401;
             return Task.CompletedTask;
-        }
-        
-        private async Task<string> ReadRequestBodyAsync()
-        {
-            Request.EnableBuffering();
-            using StreamReader reader = new(Request.Body, Encoding.UTF8, leaveOpen: true);
-            var body = await reader.ReadToEndAsync();
-            Request.Body.Position = 0;
-            return body;
-        }
-
-        private bool ValidateSignature(StringValues signature, StringValues timestamp, string body)
-        {
-            // Signature
-            var sigBytes = Convert.FromHexString(signature);
-            // Body
-            var data = Encoding.UTF8.GetBytes($"{timestamp}{body}");
-
-            // Public key 
-            var byteKey = Convert.FromHexString(Options.PublicKey);
-            var algorithm = SignatureAlgorithm.Ed25519;
-
-            var key = PublicKey.Import(algorithm, byteKey, KeyBlobFormat.RawPublicKey);
-
-            return algorithm.Verify(key, data, sigBytes);
         }
     }
 }

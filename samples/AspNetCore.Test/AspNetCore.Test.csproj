@@ -16,8 +16,4 @@
     <ProjectReference Include="..\..\src\Discord.Interactions.AspNetCore\Discord.Interactions.AspNetCore.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

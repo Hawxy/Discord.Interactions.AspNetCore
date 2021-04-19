@@ -42,7 +42,7 @@ namespace Discord.Interactions.AspNetCore.Routing
            var interactionData = interaction.Data.ValueOrFailure("Interaction data is null");
             
            var handlers = context.RequestServices.GetServices<DiscordCommand>();
-
+           //TODO replace with proper command routing - consider controller-pattern or a simpler design.
            var requiredHandler = handlers.SingleOrDefault(x => x.Name.Equals(interactionData.Name));
 
            if (requiredHandler is null)
