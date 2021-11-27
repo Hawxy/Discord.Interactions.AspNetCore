@@ -1,5 +1,7 @@
 # Discord.Interactions.AspNetCore
 
+## This project has been discontinued
+
 ASP.NET Core integration for Discord Interactions & Slash Commands
 
 ### Current status: Prototype - Please don't actually use this (yet).
